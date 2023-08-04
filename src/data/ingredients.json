@@ -1,0 +1,58 @@
+{
+  "banana": {
+    "alternateUnit": "piece",
+    "section": "fresh produce"
+  },
+  "apple": {
+    "alternateUnit": "piece",
+    "section": "fresh produce"
+  },
+  "onionWhite": {
+    "alternateUnit": "piece",
+    "section": "fresh produce"
+  },
+  "garlicClove": {
+    "alternateUnit": "pieces",
+    "section": "fresh produce"
+  },
+  "saladMix": {
+    "section": "fresh produce"
+  },
+  "cherryTomato": {
+    "alternateUnit": "pieces",
+    "section": "fresh produce"
+  },
+  "cottage": {
+    "section": "dairy section"
+  },
+  "granola": {
+    "section": "nuts section"
+  },
+  "almond": {
+    "section": "nuts section"
+  },
+  "bamba": {
+    "alternateUnit": "pieces",
+    "section": "chips section"
+  },
+  "peanut": {
+    "section": "nuts section"
+  },
+  "talyatelle": {
+    "section": "pasta section"
+  },
+  "olive": {
+    "alternateUnit": "pieces",
+    "section": "grocery section"
+  },
+  "tunaCanned": {
+    "alternateUnit": "pieces",
+    "section": "grocery section"
+  },
+  "oliveOil": {
+    "section": "grocery section"
+  },
+  "salmonFrozen": {
+    "section": "frozen foods"
+  }
+}
