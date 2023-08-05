@@ -1,5 +1,6 @@
-import json
-import os
+import json, os, mongodb_token
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
 
 class Connector:
@@ -11,6 +12,7 @@ class Connector:
         working_directory, 'data', 'ingredients.json')
     config_file_path = os.path.join(
         working_directory, 'data', 'config.json')
+    client = MongoClient(mongodb.uri, server_api=ServerApi('1'))
 
     # Selecting a data source
     def __init__(self, data_source='json'):
