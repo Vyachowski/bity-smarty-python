@@ -38,17 +38,21 @@ class Connector:
             raise error
 
     # Get dishes list
-    def get_dishes(self):
+    @staticmethod
+    def get_dishes():
         return Connector.read_json_file(Connector.dishes_file_path)
 
     # Get ingredients list
-    def get_ingredients(self):
+    @staticmethod
+    def get_ingredients():
         return Connector.read_json_file(Connector.ingredients_file_path)
 
     # Get config
-    def get_config(self):
+    @staticmethod
+    def get_config():
         return Connector.read_json_file(Connector.config_file_path)
 
     # Set config
-    def set_config(self, data):
+    @staticmethod
+    def set_config(data):
         Connector.write_json_file(Connector.config_file_path, data)

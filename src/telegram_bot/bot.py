@@ -1,10 +1,11 @@
 from token import telegraf_token
 from bin.index import Diet
-import sys
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
+import sys
 sys.path.append('../')
+
 
 bot = Updater(token=telegraf_token, use_context=True)
 diet = Diet()
@@ -23,13 +24,13 @@ def start(update, context):
         chat_id=user_id, text="Hi! Do you want to create a new menu?", reply_markup=reply_markup)
 
 
-def get_menu(update, context):
+def get_menu(update):
     diet.set_menu()
     menu_text = diet.get_menu()
     update.message.reply_text(menu_text)
 
 
-def get_grocery_list(update, context):
+def get_grocery_list(update):
     diet.set_menu()
     grocery_list_text = diet.get_grocery_list()
     update.message.reply_text(grocery_list_text)

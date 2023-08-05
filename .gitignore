@@ -167,7 +167,7 @@ cython_debug/
 
 sandbox.*
 node_modules
-token.js
+src/telegram_bot/token.py
 .DS_Store
 default_settings
 .vscode
