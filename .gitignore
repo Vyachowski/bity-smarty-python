@@ -170,3 +170,4 @@ node_modules
 token.js
 .DS_Store
 default_settings
+.vscode
