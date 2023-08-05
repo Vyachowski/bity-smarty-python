@@ -4,7 +4,7 @@ from src.connector import Connector
 
 class Diet:
     def __init__(self):
-        self._connector = Connector()
+        self._connector = Connector('mongodb')
         self._dishes = self._connector.get_dishes()
         self._ingredients = self._connector.get_ingredients()
         self._config = self._connector.get_config()
@@ -122,7 +122,7 @@ class Diet:
 
 if __name__ == "__main__":
     diet = Diet()
-    # diet.set_menu()
+    diet.set_menu()
     # diet.set_grocery_list()
     # diet.get_menu()
     # diet.get_grocery_list()

@@ -60,18 +60,14 @@ class Connector:
     def get_config(self):
         if self.data_source == 'json':
             return Connector.read_json_file(Connector.config_file_path)
-        return Connector.dishes_collection.find_one()
+        elif self.data_source == 'mongodb':
+            return Connector.config_collection.find_one()
 
 
     # Set config
-    @staticmethod
-    def set_config(data):
-        Connector.write_json_file(Connector.config_file_path, data)
-
-
-connect = Connector('mongodb')
-print(connect.get_config())
-# client = connect.client
-# mydb = client["Bity_smarty"]
-# mycol = mydb["config"]
-# x = mycol.find_one()
+    def set_config(self, data):
+        if self.data_source == 'json':
+            return Connector.write_json_file(Connector.config_file_path, data)
+        elif self.data_source == 'mongodb':
+            Connector.config_collection.delete_many({})
+            Connector.config_collection.insert_one(data)
