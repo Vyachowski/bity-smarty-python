@@ -4,7 +4,7 @@ import os
 
 class Connector:
     # Basic settings
-    working_directory = os.getcwd()
+    working_directory = os.path.dirname(__file__)
     dishes_file_path = os.path.join(
         working_directory, 'data', 'dishes.json')
     ingredients_file_path = os.path.join(
