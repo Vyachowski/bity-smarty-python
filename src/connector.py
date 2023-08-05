@@ -13,6 +13,11 @@ class Connector:
     config_file_path = os.path.join(
         working_directory, 'data', 'config.json')
     client = MongoClient(mongodb_token.uri, server_api=ServerApi('1'))
+    database = client["Bity_smarty"]
+    dishes_collection = database["dishes"]
+    ingredients_collection = database["ingredients"]
+    config_collection = database["config"]
+
 
     # Selecting a data source
     def __init__(self, data_source='json'):
@@ -40,21 +45,33 @@ class Connector:
             raise error
 
     # Get dishes list
-    @staticmethod
-    def get_dishes():
-        return Connector.read_json_file(Connector.dishes_file_path)
+    def get_dishes(self):
+        if self.data_source == 'json':
+            return Connector.read_json_file(Connector.dishes_file_path)
+        return Connector.dishes_collection.find_one()
 
     # Get ingredients list
-    @staticmethod
-    def get_ingredients():
-        return Connector.read_json_file(Connector.ingredients_file_path)
+    def get_ingredients(self):
+        if self.data_source == 'json':
+            return Connector.read_json_file(Connector.ingredients_file_path)
+        return Connector.ingredients_collection.find_one()
 
     # Get config
-    @staticmethod
-    def get_config():
-        return Connector.read_json_file(Connector.config_file_path)
+    def get_config(self):
+        if self.data_source == 'json':
+            return Connector.read_json_file(Connector.config_file_path)
+        return Connector.dishes_collection.find_one()
+
 
     # Set config
     @staticmethod
     def set_config(data):
         Connector.write_json_file(Connector.config_file_path, data)
+
+
+connect = Connector('mongodb')
+print(connect.get_config())
+# client = connect.client
+# mydb = client["Bity_smarty"]
+# mycol = mydb["config"]
+# x = mycol.find_one()
