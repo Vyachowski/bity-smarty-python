@@ -1,4 +1,6 @@
-import time, re
+import re
+import time
+
 
 def get_current_time():
     today = int(time.time())
