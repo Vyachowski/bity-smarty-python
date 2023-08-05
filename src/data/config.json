@@ -59,17 +59,41 @@
   },
   "groceryList": [
     {
+      "section": "pasta section",
+      "productAmount": [
+        {
+          "talyatelle": 600
+        }
+      ]
+    },
+    {
       "section": "chips section",
       "productAmount": []
     },
     {
-      "section": "grocery section",
+      "section": "dairy section",
       "productAmount": [
         {
-          "olive": 90
+          "cottage": 600
+        }
+      ]
+    },
+    {
+      "section": "frozen foods",
+      "productAmount": [
+        {
+          "salmonFrozen": 600
+        }
+      ]
+    },
+    {
+      "section": "nuts section",
+      "productAmount": [
+        {
+          "granola": 90
         },
         {
-          "oliveOil": 150
+          "almond": 60
         }
       ]
     },
@@ -94,37 +118,13 @@
       ]
     },
     {
-      "section": "nuts section",
+      "section": "grocery section",
       "productAmount": [
         {
-          "granola": 90
+          "olive": 90
         },
         {
-          "almond": 60
-        }
-      ]
-    },
-    {
-      "section": "pasta section",
-      "productAmount": [
-        {
-          "talyatelle": 600
-        }
-      ]
-    },
-    {
-      "section": "dairy section",
-      "productAmount": [
-        {
-          "cottage": 600
-        }
-      ]
-    },
-    {
-      "section": "frozen foods",
-      "productAmount": [
-        {
-          "salmonFrozen": 600
+          "oliveOil": 150
         }
       ]
     }

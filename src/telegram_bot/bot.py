@@ -1,4 +1,3 @@
-import sys
 import telebot
 from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -6,7 +5,6 @@ from src.main import Diet
 from src.telegram_bot.token import telegraf_token
 
 
-sys.path.append('../')
 bot = telebot.TeleBot(telegraf_token, parse_mode=None)
 diet = Diet()
 
