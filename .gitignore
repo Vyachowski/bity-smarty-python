@@ -171,3 +171,4 @@ token.js
 .DS_Store
 default_settings
 .vscode
+.idea
