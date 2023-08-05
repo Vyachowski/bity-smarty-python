@@ -50,7 +50,6 @@ def button_callback(call):
         menu_text = diet.get_menu()
         bot.send_message(chat_id=user_id, text=menu_text, reply_markup=reply_markup)
     elif call.data == 'get_grocery_list':
-        print('sosisa!')
         diet.set_grocery_list()
         grocery_list_text = diet.get_grocery_list()
         bot.send_message(chat_id=user_id, text=grocery_list_text)
