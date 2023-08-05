@@ -1,8 +1,8 @@
 from src.functions import *
 from src.connector import Connector
 
-import sys
-sys.path.append('../')
+# import sys
+# sys.path.append('../')
 
 
 class Diet:
@@ -103,33 +103,39 @@ class Diet:
 
     def get_grocery_list(self):
         grocery_list_array = self._config.get('groceryList', [])
-        # grocery_list_columns = [
-        #     # f"| {section['section'].upper()}\n\n{'' if not section['productAmount'] else '\n'.join([object_to_text_column(product) for product in section['productAmount']])}\n\n"
-        #     # for section in grocery_list_array
-        # ]
-        # grocery_list = ''.join(grocery_list_columns)
-        # return grocery_list
+        grocery_list_columns = []
 
-    def display_menu(self):
-        menu = {
-            'For breakfast · 🥓 · 🧇 · 🥞 · 🍳': self._config['menu']['breakfast'],
-            'For snack · 🍎 · 🍪 · 🥨 · 🍫 · ': self._config['menu']['snack'],
-            'For lunch · 🍽️ · 🥪 · 🍱 · 😋 ': self._config['menu']['lunch'],
-            'For dinner · 🥘 · 🍲 · 🥣 · 🥗 ': self._config['menu']['dinner'],
-        }
+        for section in grocery_list_array:
+            section_title = f"| {section['section'].upper()}\n\n"
+            product_amounts = '\n'.join([object_to_text_column(product) for product in section['productAmount']])
+            section_text = f"{section_title}{product_amounts}\n\n"
+            grocery_list_columns.append(section_text)
 
-        for meal_name, dish in menu.items():
-            if dish:
-                print(f"| {meal_name}\n| {dish['name'].upper()}\n\n{object_to_text_column(dish['ingredients'])}\n")
+        grocery_list = ''.join(grocery_list_columns)
+        return grocery_list
+
+    # def display_menu(self):
+    #     menu = {
+    #         'For breakfast · 🥓 · 🧇 · 🥞 · 🍳': self._config['menu']['breakfast'],
+    #         'For snack · 🍎 · 🍪 · 🥨 · 🍫 · ': self._config['menu']['snack'],
+    #         'For lunch · 🍽️ · 🥪 · 🍱 · 😋 ': self._config['menu']['lunch'],
+    #         'For dinner · 🥘 · 🍲 · 🥣 · 🥗 ': self._config['menu']['dinner'],
+    #     }
+    #
+    #     for meal_name, dish in menu.items():
+    #         if dish:
+    #             print(f"| {meal_name}\n| {dish['name'].upper()}\n\n{object_to_text_column(dish['ingredients'])}\n")
 
     # def display_grocery_list(self):
     #     grocery_list_array = self._config.get('groceryList', [])
     #     for section in grocery_list_array:
     #         print(f"| {section['section'].upper()}\n\n{'' if not section['productAmount'] else '\n'.join([object_to_text_column(product) for product in section['productAmount']])}\n")
 
-    # if __name__ == "__main__":
-    #     diet = Diet()
-    #     diet.set_menu()
-    #     diet.set_grocery_list()
-    #     diet.display_menu()
-    #     diet.display_grocery_list()
+
+if __name__ == "__main__":
+    diet = Diet()
+    # diet.set_menu()
+    # diet.set_grocery_list()
+    diet.get_menu()
+    diet.get_grocery_list()
+    # diet.display_grocery_list()

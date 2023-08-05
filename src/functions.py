@@ -1,5 +1,4 @@
-import time
-
+import time, re
 
 def get_current_time():
     today = int(time.time())
@@ -35,7 +34,9 @@ def multiply_object_values(obj, multiplier):
 
 
 def camel_case_text_to_normal(text):
-    return text[0].upper() + text[1:].replace('_', ' ').title()
+    words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)', text)
+    normalized_text = ' '.join(words)
+    return normalized_text[0].upper() + normalized_text[1:]
 
 
 def object_to_text_column(obj):

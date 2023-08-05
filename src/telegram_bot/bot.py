@@ -1,5 +1,5 @@
 from token import telegraf_token
-from bin.index import Diet
+from src.index import Diet
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 

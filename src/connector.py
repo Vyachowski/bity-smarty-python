@@ -6,11 +6,11 @@ class Connector:
     # Basic settings
     working_directory = os.getcwd()
     dishes_file_path = os.path.join(
-        working_directory, 'src', 'data', 'dishes.json')
+        working_directory, 'data', 'dishes.json')
     ingredients_file_path = os.path.join(
-        working_directory, 'src', 'data', 'ingredients.json')
+        working_directory, 'data', 'ingredients.json')
     config_file_path = os.path.join(
-        working_directory, 'src', 'data', 'config.json')
+        working_directory, 'data', 'config.json')
 
     # Selecting a data source
     def __init__(self, data_source='json'):
