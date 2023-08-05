@@ -1,5 +1,5 @@
 import json
-import mongodb_token
+from src.mongodb_token import uri
 import os
 
 from pymongo.mongo_client import MongoClient
@@ -15,7 +15,7 @@ class Connector:
         working_directory, 'data', 'ingredients.json')
     config_file_path = os.path.join(
         working_directory, 'data', 'config.json')
-    client = MongoClient(mongodb_token.uri, server_api=ServerApi('1'))
+    client = MongoClient(uri, server_api=ServerApi('1'))
     database = client["Bity_smarty"]
     dishes_collection = database["dishes"]
     ingredients_collection = database["ingredients"]

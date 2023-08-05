@@ -2,10 +2,10 @@ import telebot
 from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from src.main import Diet
-from src.telegram_bot.token import telegraf_token
+from src.telegram_bot.token import token
 
 
-bot = telebot.TeleBot(telegraf_token, parse_mode=None)
+bot = telebot.TeleBot(token, parse_mode=None)
 diet = Diet()
 
 

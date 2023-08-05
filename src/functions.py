@@ -8,7 +8,7 @@ def get_current_time():
 
 
 def has_passed_given_days(target_time, days_to_check=10):
-    if target_time is None:
+    if target_time is None or target_time == 0:
         return True
 
     seconds_in_day = 86400
