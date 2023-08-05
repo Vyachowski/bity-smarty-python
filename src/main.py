@@ -60,7 +60,7 @@ class Diet:
         self._connector.set_config(self._config)
 
     def set_menu(self):
-        if not has_passed_given_days(self._config.get('date'), self._menu_duration):
+        if not has_passed_given_days(self._config['date'], self._menu_duration):
             print("Menu is still up-to-date")
             return
 
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     diet = Diet()
     diet.set_menu()
     # diet.set_grocery_list()
-    # diet.get_menu()
+    # print(diet.get_menu())
     # diet.get_grocery_list()
     # diet.display_menu()
     # diet.display_grocery_list()

@@ -22,7 +22,7 @@ class Connector:
     config_collection = database["config"]
 
     # Selecting a data source
-    def __init__(self, data_source='json'):
+    def __init__(self, data_source='mongodb'):
         self.data_source = data_source
 
     # Read a JSON file
@@ -50,13 +50,15 @@ class Connector:
     def get_dishes(self):
         if self.data_source == 'json':
             return Connector.read_json_file(Connector.dishes_file_path)
-        return Connector.dishes_collection.find_one()
+        elif self.data_source == 'mongodb':
+            return Connector.dishes_collection.find_one()
 
     # Get ingredients list
     def get_ingredients(self):
         if self.data_source == 'json':
             return Connector.read_json_file(Connector.ingredients_file_path)
-        return Connector.ingredients_collection.find_one()
+        elif self.data_source == 'mongodb':
+            return Connector.ingredients_collection.find_one()
 
     # Get config
     def get_config(self):

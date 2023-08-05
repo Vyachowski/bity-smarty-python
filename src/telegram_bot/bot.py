@@ -6,7 +6,6 @@ from src.telegram_bot.token import token
 
 
 bot = telebot.TeleBot(token, parse_mode=None)
-diet = Diet()
 
 
 @bot.message_handler(commands=['start'])
@@ -26,6 +25,7 @@ def help_command(message):
 def menu_command(message):
     keyboard = [[InlineKeyboardButton("Get grocery list", callback_data='get_grocery_list')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
+    diet = Diet()
     diet.set_menu()
     menu = diet.get_menu()
     bot.send_message(message.chat.id, menu, reply_markup=reply_markup)
@@ -33,6 +33,7 @@ def menu_command(message):
 
 @bot.message_handler(commands=['get_grocery_list'])
 def grocery_list_command(message):
+    diet = Diet()
     diet.set_grocery_list()
     grocery_list = diet.get_grocery_list()
     bot.send_message(message.chat.id, grocery_list)
@@ -44,13 +45,15 @@ def button_callback(call):
     if call.data == 'get_menu':
         keyboard = [[InlineKeyboardButton("Get grocery list", callback_data='get_grocery_list')]]
         reply_markup = InlineKeyboardMarkup(keyboard)
+        diet = Diet()
         diet.set_menu()
         menu_text = diet.get_menu()
         bot.send_message(chat_id=user_id, text=menu_text, reply_markup=reply_markup)
     elif call.data == 'get_grocery_list':
+        diet = Diet()
         diet.set_grocery_list()
         grocery_list_text = diet.get_grocery_list()
         bot.send_message(chat_id=user_id, text=grocery_list_text)
 
 
-bot.infinity_polling()
+bot.polling()
