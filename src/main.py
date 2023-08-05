@@ -1,9 +1,6 @@
 from src.functions import *
 from src.connector import Connector
 
-# import sys
-# sys.path.append('../')
-
 
 class Diet:
     def __init__(self):
@@ -114,28 +111,20 @@ class Diet:
         grocery_list = ''.join(grocery_list_columns)
         return grocery_list
 
-    # def display_menu(self):
-    #     menu = {
-    #         'For breakfast · 🥓 · 🧇 · 🥞 · 🍳': self._config['menu']['breakfast'],
-    #         'For snack · 🍎 · 🍪 · 🥨 · 🍫 · ': self._config['menu']['snack'],
-    #         'For lunch · 🍽️ · 🥪 · 🍱 · 😋 ': self._config['menu']['lunch'],
-    #         'For dinner · 🥘 · 🍲 · 🥣 · 🥗 ': self._config['menu']['dinner'],
-    #     }
-    #
-    #     for meal_name, dish in menu.items():
-    #         if dish:
-    #             print(f"| {meal_name}\n| {dish['name'].upper()}\n\n{object_to_text_column(dish['ingredients'])}\n")
+    def display_menu(self):
+        menu = self.get_menu()
+        print(menu)
 
-    # def display_grocery_list(self):
-    #     grocery_list_array = self._config.get('groceryList', [])
-    #     for section in grocery_list_array:
-    #         print(f"| {section['section'].upper()}\n\n{'' if not section['productAmount'] else '\n'.join([object_to_text_column(product) for product in section['productAmount']])}\n")
+    def display_grocery_list(self):
+        grocery_list = self.get_grocery_list()
+        print(grocery_list)
 
 
 if __name__ == "__main__":
     diet = Diet()
     # diet.set_menu()
     # diet.set_grocery_list()
-    diet.get_menu()
-    diet.get_grocery_list()
+    # diet.get_menu()
+    # diet.get_grocery_list()
+    # diet.display_menu()
     # diet.display_grocery_list()
