@@ -1,4 +1,7 @@
-import json, os, mongodb_token
+import json
+import mongodb_token
+import os
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
@@ -17,7 +20,6 @@ class Connector:
     dishes_collection = database["dishes"]
     ingredients_collection = database["ingredients"]
     config_collection = database["config"]
-
 
     # Selecting a data source
     def __init__(self, data_source='json'):
@@ -62,7 +64,6 @@ class Connector:
             return Connector.read_json_file(Connector.config_file_path)
         elif self.data_source == 'mongodb':
             return Connector.config_collection.find_one()
-
 
     # Set config
     def set_config(self, data):
