@@ -38,6 +38,7 @@ class Diet:
     def _create_grocery_list(self):
         all_ingredients_list = self._ingredients.items()
         ingredients_list = self._config.get('ingredientsList', {})
+        print(ingredients_list)
         sections = set(prop['section'] for _, prop in all_ingredients_list)
 
         ingredients_by_section = []
@@ -124,3 +125,11 @@ class Diet:
     def display_grocery_list(self):
         grocery_list = self.get_grocery_list()
         print(grocery_list)
+
+
+# TESTS
+# diet = Diet()  # // Passed
+# print(diet._create_ingredients_list())  #// Passed
+# print(diet._set_ingredients_list())  #// Passed
+# print(diet._create_grocery_list())  #// Passed
+# print(diet.set_grocery_list())  #// Passed

@@ -1,6 +1,6 @@
 import json
-from src.mongodb_token import uri
 import os
+from src.mongodb_token import uri
 
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -55,10 +55,14 @@ class Connector:
 
     # Get ingredients list
     def get_ingredients(self):
+        ingredients = {}
         if self.data_source == 'json':
-            return Connector.read_json_file(Connector.ingredients_file_path)
+            ingredients = Connector.read_json_file(Connector.ingredients_file_path)
         elif self.data_source == 'mongodb':
-            return Connector.ingredients_collection.find_one()
+            ingredients = Connector.ingredients_collection.find_one()
+            if '_id' in ingredients:
+                del ingredients['_id']
+        return ingredients
 
     # Get config
     def get_config(self):
@@ -74,3 +78,20 @@ class Connector:
         elif self.data_source == 'mongodb':
             Connector.config_collection.delete_many({})
             Connector.config_collection.insert_one(data)
+
+
+# TESTS
+
+# connect = Connector()  # // Passed
+# print(connect.working_directory) // Passed
+# print(connect.dishes_file_path) // Passed
+# print(connect.ingredients_file_path) // Passed
+# print(connect.config_file_path) // Passed
+# print(connect.client) // Passed
+# print(connect.database) // Passed
+# print(connect.dishes_collection) // Passed
+# print(connect.ingredients_collection) // Passed
+# print(connect.config_collection) // Passed
+# print(connect.get_config())  # // Passed
+# print(connect.get_dishes())  # // Passed
+# print(connect.get_ingredients())  # // Passed
