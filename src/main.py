@@ -1,5 +1,6 @@
 from src.functions import *
 from src.connector import Connector
+import random
 
 
 class Diet:
@@ -12,7 +13,6 @@ class Diet:
 
     @staticmethod
     def get_random_meal(meal_variants):
-        import random
         if meal_variants:
             meal = random.choice(meal_variants)
             name = meal.get('name', '')
@@ -76,7 +76,8 @@ class Diet:
     def set_grocery_list(self):
         try:
             self._config['ingredientsList'] = self._create_ingredients_list()
-            self._config['groceryList'] = self._create_grocery_list()
+            self._config['groceryList'] = self._create_grocery_list() # Padaaet
+            print(self._config['groceryList'])
             self._connector.set_config(self._config)
         except Exception as error:
             print("Error while setting the grocery list:", error)
@@ -111,6 +112,11 @@ class Diet:
         grocery_list = ''.join(grocery_list_columns)
         return grocery_list
 
+    def get_random_cheatmeal(self):
+        cheatmeal_list = self._dishes.get('cheatmeal', [])
+        cheatmeal = random.choice(cheatmeal_list)
+        return cheatmeal
+
     def display_menu(self):
         menu = self.get_menu()
         print(menu)
@@ -118,13 +124,3 @@ class Diet:
     def display_grocery_list(self):
         grocery_list = self.get_grocery_list()
         print(grocery_list)
-
-
-if __name__ == "__main__":
-    diet = Diet()
-    diet.set_menu()
-    # diet.set_grocery_list()
-    # print(diet.get_menu())
-    # diet.get_grocery_list()
-    # diet.display_menu()
-    # diet.display_grocery_list()
