@@ -38,7 +38,6 @@ class Diet:
     def _create_grocery_list(self):
         all_ingredients_list = self._ingredients.items()
         ingredients_list = self._config.get('ingredientsList', {})
-        print(ingredients_list)
         sections = set(prop['section'] for _, prop in all_ingredients_list)
 
         ingredients_by_section = []
@@ -77,8 +76,7 @@ class Diet:
     def set_grocery_list(self):
         try:
             self._config['ingredientsList'] = self._create_ingredients_list()
-            self._config['groceryList'] = self._create_grocery_list() # Padaaet
-            print(self._config['groceryList'])
+            self._config['groceryList'] = self._create_grocery_list()
             self._connector.set_config(self._config)
         except Exception as error:
             print("Error while setting the grocery list:", error)
@@ -125,7 +123,8 @@ class Diet:
                 else:
                     name = meal
                 dishes_list.append(f"  - {name}")
-        return "\n".join(dishes_list)
+        dishes_result = '\n'.join(dishes_list)
+        return dishes_result
 
 
 
@@ -146,13 +145,3 @@ class Diet:
     def display_dishes_list(self):
         dishes_list = self.get_dishes_list()
         print(dishes_list)
-
-
-# TESTS
-diet = Diet()  # // Passed
-# print(diet._create_ingredients_list())  #// Passed
-# print(diet._set_ingredients_list())  #// Passed
-# print(diet._create_grocery_list())  #// Passed
-# print(diet.set_grocery_list())  #// Passed
-# print(diet.get_dishes_list())  #// Passed
-diet.display_dishes_list()  #// Passed

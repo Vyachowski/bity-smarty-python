@@ -80,20 +80,3 @@ class Connector:
         elif self.data_source == 'mongodb':
             Connector.config_collection.delete_many({})
             Connector.config_collection.insert_one(data)
-
-
-# TESTS
-
-# connect = Connector()  # // Passed
-# print(connect.working_directory) // Passed
-# print(connect.dishes_file_path) // Passed
-# print(connect.ingredients_file_path) // Passed
-# print(connect.config_file_path) // Passed
-# print(connect.client) // Passed
-# print(connect.database) // Passed
-# print(connect.dishes_collection) // Passed
-# print(connect.ingredients_collection) // Passed
-# print(connect.config_collection) // Passed
-# print(connect.get_config())  # // Passed
-# print(connect.get_dishes())  # // Passed
-# print(connect.get_ingredients())  # // Passed

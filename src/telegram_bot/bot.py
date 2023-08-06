@@ -21,7 +21,7 @@ def help_command(message):
                                       "proceed...")
 
 
-@bot.message_handler(commands=['get_menu'])
+@bot.message_handler(commands=['menu'])
 def menu_command(message):
     keyboard = [[InlineKeyboardButton("Get grocery list", callback_data='get_grocery_list')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -31,7 +31,7 @@ def menu_command(message):
     bot.send_message(message.chat.id, menu, reply_markup=reply_markup)
 
 
-@bot.message_handler(commands=['get_grocery_list'])
+@bot.message_handler(commands=['grocery_list'])
 def grocery_list_command(message):
     diet = Diet()
     diet._set_ingredients_list()
@@ -40,12 +40,18 @@ def grocery_list_command(message):
     bot.send_message(message.chat.id, grocery_list)
 
 
-@bot.message_handler(commands=['get_cheatmeal'])
+@bot.message_handler(commands=['cheatmeal'])
 def cheatmeal_command(message):
     diet = Diet()
     cheatmeal = diet.get_random_cheatmeal()
     bot.send_message(message.chat.id, cheatmeal)
 
+
+@bot.message_handler(commands=['dishes'])
+def dishes_command(message):
+    diet = Diet()
+    dishes = diet.get_dishes_list()
+    bot.send_message(message.chat.id, dishes)
 
 @bot.callback_query_handler(func=lambda call: True)
 def button_callback(call):
