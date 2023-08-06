@@ -113,6 +113,22 @@ class Diet:
         grocery_list = ''.join(grocery_list_columns)
         return grocery_list
 
+
+    def get_dishes_list(self):
+        dishes = self._dishes
+        dishes_list = []
+        for meal_type, meal_items in dishes.items():
+            dishes_list.append(meal_type.capitalize() + ':')
+            for meal in meal_items:
+                if 'name' in meal:
+                    name = meal['name']
+                else:
+                    name = meal
+                dishes_list.append(f"  - {name}")
+        return "\n".join(dishes_list)
+
+
+
     def get_random_cheatmeal(self):
         cheatmeal_list = self._dishes.get('cheatmeal', [])
         cheatmeal = random.choice(cheatmeal_list)
@@ -127,9 +143,16 @@ class Diet:
         print(grocery_list)
 
 
+    def display_dishes_list(self):
+        dishes_list = self.get_dishes_list()
+        print(dishes_list)
+
+
 # TESTS
-# diet = Diet()  # // Passed
+diet = Diet()  # // Passed
 # print(diet._create_ingredients_list())  #// Passed
 # print(diet._set_ingredients_list())  #// Passed
 # print(diet._create_grocery_list())  #// Passed
 # print(diet.set_grocery_list())  #// Passed
+# print(diet.get_dishes_list())  #// Passed
+diet.display_dishes_list()  #// Passed

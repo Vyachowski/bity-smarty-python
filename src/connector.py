@@ -48,10 +48,13 @@ class Connector:
 
     # Get dishes list
     def get_dishes(self):
+        dishes = {}
         if self.data_source == 'json':
-            return Connector.read_json_file(Connector.dishes_file_path)
+            dishes = Connector.read_json_file(Connector.dishes_file_path)
         elif self.data_source == 'mongodb':
-            return Connector.dishes_collection.find_one()
+            dishes = Connector.dishes_collection.find_one()
+            del dishes['_id']
+        return dishes
 
     # Get ingredients list
     def get_ingredients(self):
@@ -60,8 +63,7 @@ class Connector:
             ingredients = Connector.read_json_file(Connector.ingredients_file_path)
         elif self.data_source == 'mongodb':
             ingredients = Connector.ingredients_collection.find_one()
-            if '_id' in ingredients:
-                del ingredients['_id']
+            del ingredients['_id']
         return ingredients
 
     # Get config
